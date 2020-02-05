@@ -20,7 +20,7 @@ class Header extends Component {
             <div className = "header">
                 <div className = "formContainer">
                     <form>
-                        <input onChange = { this.handleChange } />
+                        <input onChange = { this.handleChange } name = 'locationName' value = { this.state.locationName } placeHolder = "City Name" minLength = '3' />
                     </form>
                 </div>
                 Allo
