@@ -15,12 +15,17 @@ class Header extends Component {
         })
     }
 
+    handleSubmit = ( e ) => {
+        e.preventDefault()
+
+    }
+
     render(){
         return(
             <div className = "header">
                 <div className = "formContainer">
                     <form>
-                        <input onChange = { this.handleChange } name = 'locationName' value = { this.state.locationName } placeHolder = "City Name" minLength = '3' />
+                        <input onChange = { this.handleChange } name = 'locationName' value = { this.state.locationName } placeholder = "City Name" minLength = '3' />
                     </form>
                 </div>
                 Allo
