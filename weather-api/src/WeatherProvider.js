@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { render } from '@testing-library/react'
 
 const { Consumer, Provider } = React.createContext()
 
@@ -7,12 +6,12 @@ class WeatherProvider extends Component {
     constructor(){
         super()
         this.state = {
-    
-        }
-        render(){
-            
         }
     }
+
+
+
+
     
     render(){
         return(
@@ -20,7 +19,7 @@ class WeatherProvider extends Component {
                                 
                                 }} >
                 { this.props.children }
-
+    
             </Provider>
         )
     }
