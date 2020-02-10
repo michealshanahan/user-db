@@ -26,9 +26,9 @@ class Header extends Component {
                 <div className = "formContainer">
                     <form>
                         <input onChange = { this.handleChange } name = 'locationName' value = { this.state.locationName } placeholder = "City Name" minLength = '3' />
+                        <button>Search</button>
                     </form>
                 </div>
-                Allo
             </div>
         )
     }
