@@ -14,9 +14,14 @@ const App = () => {
             <Header />
             <Switch>
                 <Route exact path = '/' component = { Home } />
+                <Route path = {`/search/:location`} component = {MultipleLocations} />
             </Switch>
         </div>
     )
 }
 
 export default App
+
+
+
+//Shouldbe able to push to history in header. And now to splice the search from the props, and do an axios call with it onrender

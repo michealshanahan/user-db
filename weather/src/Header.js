@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
-import { Link } from 'react-router-dom'
+import { withRouter } from 'react-router-dom'
 
 import Home from './Home.js'
 
@@ -25,7 +25,7 @@ class Header extends Component{
         const lengthCheck = ( arrayToCheck ) => {
             arrayToCheck.length === 1 
                 ? console.log('1')
-                : console.log('not one')
+                : this.props.history.push(`/search/${this.state.location}`)
         }
 
         const handleSubmit = (e) => {
@@ -54,4 +54,4 @@ class Header extends Component{
     }
 }
 
-export default Header
+export default withRouter(Header)

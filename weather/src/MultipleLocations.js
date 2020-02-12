@@ -7,7 +7,10 @@ class MultipleLocations extends Component {
             
         }
     }
+    
     render(){
+        let searchParameter = JSON.stringify(this.props.match.url)
+        console.log(searchParameter)
         return(
             <div> Multi</div>
         )
