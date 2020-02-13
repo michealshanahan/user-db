@@ -3,7 +3,7 @@ import { Switch, Route } from 'react-router-dom'
 
 import Header from './Header'
 import Home from './Home'
-import MultipleLocations from './MultipleLocations'
+import MultipleLocations from './Results'
 import DailyWeather from './DailyWeather'
 
 
@@ -24,4 +24,4 @@ export default App
 
 
 
-//Shouldbe able to push to history in header. And now to splice the search from the props, and do an axios call with it onrender
+// Working to get component Results to rerender after search
