@@ -5,7 +5,8 @@ class DailyWeather extends Component {
     constructor(){
         super()
         this.state = {
-            detailedView : false
+            detailedView : false,
+            metric: false
         }
     }
 
@@ -16,13 +17,13 @@ class DailyWeather extends Component {
         let weatherToday = ()=> {
             let date = applicable_date.slice(8)
             let today = new Date().getDate()
-            if(date == today){
+            if(date === today){
                 return(
                     <div key  = {this.props.id}>
                         Today
                     </div>
                 )
-            }else if (date == (today + 1)){
+            }else if (date === (today + 1)){
                 return(
                     <div key = {this.props.id}>
                         Tomorrow
@@ -31,16 +32,32 @@ class DailyWeather extends Component {
             }else {
                 return(
                     <div key = {this.props.id}>
-                        {applicable_date}
+                        {applicable_date.slice(5)}
                     </div>
 
                 )
             }
         }
 
+        let convertTemp = (celcius)=> {
+            if(this.state.metric === false){
+                return (Math.floor((celcius*9/5) + 32)+'°')
+            }else{
+                return (celcius+'°' )
+            }
+        }
+        let toggle = (toToggle)=>{this.setState((prev)=>({[toToggle]: !prev[toToggle]}))}
+
         return(
-            <div> {weatherToday()}
-            
+            <div> 
+                <h3>
+                    {weatherToday()}
+                </h3>
+                <img src={`http://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`} alt = {weather_state_abbr} />
+                <br/>
+                Low: {convertTemp(min_temp)}
+                <br/>
+                High: {convertTemp(max_temp)}
             </div>
         )
     }
