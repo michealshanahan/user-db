@@ -17,13 +17,13 @@ class DailyWeather extends Component {
         let weatherToday = ()=> {
             let date = applicable_date.slice(8)
             let today = new Date().getDate()
-            if(date === today){
+            if(date == today){
                 return(
                     <div key  = {this.props.id}>
                         Today
                     </div>
                 )
-            }else if (date === (today + 1)){
+            }else if (date == (today + 1)){
                 return(
                     <div key = {this.props.id}>
                         Tomorrow
@@ -50,6 +50,7 @@ class DailyWeather extends Component {
 
         return(
             <div> 
+                <button onClick = { ()=> console.log(this.props.toggleCelcius)}>DailyWeather Props</button>
                 <h3>
                     {weatherToday()}
                 </h3>

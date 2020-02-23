@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 
 import MultipleLocations from './MultipleLocations'
-import WeatherCard from './WeatherCard'
+import WeatherCard from './WeeksWeather'
 
 class Results extends Component {
     constructor(){

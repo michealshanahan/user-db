@@ -3,6 +3,8 @@ import { Switch, Route } from 'react-router-dom'
 
 import WithoutContextApp from './withoutContext/App'
 
+import './App.css'
+
 
 const App = () => {
     return (

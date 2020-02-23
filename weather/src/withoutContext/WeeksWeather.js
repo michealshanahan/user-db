@@ -1,11 +1,12 @@
 import React, { Component } from 'react'
 import Axios from 'axios'
 
-import DailyWeather from './DailyWeather'
+import DailyWeather from './DailyWeather.js'
+import MetricSwitch from './MetricSwitch.js'
 
 class WeatherCard extends Component {
-    constructor(){
-        super()
+    constructor(props){
+        super(props)
         this.state = {
             forecast : {
                 consolidated_weather: []
@@ -25,12 +26,14 @@ class WeatherCard extends Component {
         console.log(this.state.forecast)
         let mappedForecast = this.state.forecast.consolidated_weather.map(daysWeather => {
             return(
-                <DailyWeather key = {daysWeather.id} daysWeather = {daysWeather} />
+                <DailyWeather key = {daysWeather.id} daysWeather = {daysWeather} toggleCelcius = {MetricSwitch} />
             )
         })
         return(
             <div>
-                <div>{this.state.forecast.title}</div>
+                <div>{this.state.forecast.title}<MetricSwitch />
+                    <button onClick = { ()=> console.log("fuck", this.props)} >WeatherCard</button>
+                </div>
                 {mappedForecast}
             </div>
         )
