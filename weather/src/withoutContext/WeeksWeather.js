@@ -2,15 +2,15 @@ import React, { Component } from 'react'
 import Axios from 'axios'
 
 import DailyWeather from './DailyWeather.js'
-import MetricSwitch from './MetricSwitch.js'
 
-class WeatherCard extends Component {
+class WeeksWeather extends Component {
     constructor(props){
         super(props)
         this.state = {
             forecast : {
                 consolidated_weather: []
-            }
+            },
+            celcius: false
         }
     }
 
@@ -21,18 +21,27 @@ class WeatherCard extends Component {
         })
     }
 
+    toggle = (toToggle) => { this.setState((prev) => ({[toToggle]: !prev[toToggle]})) }
 
     render(){
         console.log(this.state.forecast)
         let mappedForecast = this.state.forecast.consolidated_weather.map(daysWeather => {
             return(
-                <DailyWeather key = {daysWeather.id} daysWeather = {daysWeather} toggleCelcius = {MetricSwitch} />
+                <div>
+                    <DailyWeather key = {daysWeather.id} daysWeather = {daysWeather} celcius = { this.state.celcius } />
+                    <button onClick = { ()=> console.log(this.props) } >WeeksWeather</button>
+                </div>
             )
         })
         return(
             <div>
-                <div>{this.state.forecast.title}<MetricSwitch />
-                    <button onClick = { ()=> console.log("fuck", this.props)} >WeatherCard</button>
+                <div>
+                    <span onClick = {()=>{this.toggle("celcius")}} >
+                        <span className = {`celcius_${this.state.celcius}`} >°F</span>|<span className = {`celcius_${!this.state.celcius}`} >°C</span>
+                    </span>
+                </div>
+                <div>
+                    {this.state.forecast.title}
                 </div>
                 {mappedForecast}
             </div>
@@ -40,4 +49,4 @@ class WeatherCard extends Component {
     }
 }
 
-export default WeatherCard
+export default WeeksWeather
