@@ -24,10 +24,9 @@ class WeeksWeather extends Component {
     toggle = (toToggle) => { this.setState((prev) => ({[toToggle]: !prev[toToggle]})) }
 
     render(){
-        console.log(this.state.forecast)
         let mappedForecast = this.state.forecast.consolidated_weather.map(daysWeather => {
             return(
-                <div>
+                <div key = {daysWeather.id} >
                     <DailyWeather key = {daysWeather.id} daysWeather = {daysWeather} celcius = { this.state.celcius } />
                     <button onClick = { ()=> console.log(this.props) } >WeeksWeather</button>
                 </div>
@@ -36,12 +35,12 @@ class WeeksWeather extends Component {
         return(
             <div>
                 <div>
+                    <div>
+                        {this.state.forecast.title}
+                    </div>
                     <span onClick = {()=>{this.toggle("celcius")}} >
                         <span className = {`celcius_${this.state.celcius}`} >°F</span>|<span className = {`celcius_${!this.state.celcius}`} >°C</span>
                     </span>
-                </div>
-                <div>
-                    {this.state.forecast.title}
                 </div>
                 {mappedForecast}
             </div>
