@@ -60,11 +60,11 @@ class DailyWeather extends Component {
             if(this.state.detailedView){
                 return(
                     <div>
+                        <img src={`http://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`} alt = {weather_state_abbr} />
                         <h3>
                             {weatherToday()}
                         </h3>
                         <h6>{weather_state_name}</h6>
-                        <img src={`http://www.metaweather.com/static/img/weather/png/64/${weather_state_abbr}.png`} alt = {weather_state_abbr} />
                         <br/>
                         Low: {convertTemp(min_temp)}
                         <br/>
