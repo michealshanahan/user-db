@@ -46,11 +46,11 @@ class DailyWeather extends Component {
             }
         }
 
-        let convertMph = (mph)=> {
+        let convertMiles = (mph, imperialText, metricText)=> {
             if(!this.props.celcius){
-                return ( Math.round(mph) + ' MPH' )
+                return ( Math.round(mph) + ` ${imperialText}` )
             }else{
-                return( Math.round(mph * 1.60934) +' KPH' )
+                return( Math.round(mph * 1.609344) +` ${metricText}` )
             }
         }
 
@@ -69,7 +69,13 @@ class DailyWeather extends Component {
                         Low: {convertTemp(min_temp)}
                         <br/>
                         High: {convertTemp(max_temp)}
-                        <div>{convertMph(wind_speed)} {wind_direction_compass} </div>
+                        <div>
+                            {convertMiles(wind_speed, 'MPH', 'KPH')}
+                            {wind_direction_compass} 
+                            Humidity: {humidity}% 
+                            Visibility: {convertMiles(visibility, ' Miles', ' Kilometers')}
+                            Wind Direction: {wind_direction}
+                        </div>
                     </div>
                 )
             } else {
