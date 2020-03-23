@@ -11,7 +11,7 @@ class DailyWeather extends Component {
 
     render(){
 
-        let { id, weather_state_name, weather_state_abbr, wind_direction_compass, applicable_date, min_temp, max_temp, the_temp, wind_speed, wind_direction, air_pressure, humidity, visibility, predictability } = this.props.daysWeather
+        let { weather_state_name, weather_state_abbr, wind_direction_compass, applicable_date, min_temp, max_temp, the_temp, wind_speed, wind_direction, air_pressure, humidity, visibility, predictability } = this.props.daysWeather
 
         let weatherToday = ()=> {
             let date = parseInt(applicable_date.slice(8))
@@ -75,6 +75,7 @@ class DailyWeather extends Component {
                             Humidity: {humidity}% 
                             Visibility: {convertMiles(visibility, ' Miles ', ' Kilometers ')}
                             Wind Direction: {Math.round(wind_direction) + '° past north '}
+                            Air Pressure:{air_pressure}
                         </div>
                     </div>
                 )
