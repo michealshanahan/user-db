@@ -15,14 +15,13 @@ class Results extends Component {
     getData = (search) => {
         return (
             Axios.get(`https://vschool-cors.herokuapp.com?url=https://www.metaweather.com/api/location/search/?query=${ search }`).then(res => {
-                     this.setState({ response : res.data })
+                this.setState({ response : res.data })
         })
         )
     }
 
     componentDidMount(){
         const searchParameter = this.props.match.url.slice(8)
-        console.log('mount')
         this.getData(searchParameter)
         
     }
@@ -30,7 +29,6 @@ class Results extends Component {
     componentDidUpdate(prevProps){
         let searchParameter = this.props.match.url.slice(8)
         let prevSearchParameter = prevProps.match.url.slice(8)
-        console.log('update', this.state.response[0].woeid)
         if( searchParameter !== prevSearchParameter ){
             this.getData(searchParameter)
         }
